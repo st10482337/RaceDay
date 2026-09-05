@@ -247,5 +247,7 @@ RaceDay/
 │
 └── README.md
 
+---
+
 ## 12. CI
-<img width="1407" height="806" alt="image" src="https://github.com/user-attachments/assets/acd1ff86-d66b-4e05-86a4-ebb3e185e652" />
+<img width="1407" height="806" alt="image" src="https://github.com/user-attachments/assets/6c14d5c1-abc5-4883-b7a3-e03b3080edb8" />
