@@ -232,8 +232,7 @@ Workflow file:
 ---
 
 ## 11. YouTube Link
-[https://youtu.be/fRL6_2z8uDo
-](url)
+
 
 ## 12. CI
 <img width="1407" height="806" alt="image" src="https://github.com/user-attachments/assets/f676697a-50d3-4618-a44f-f11ad8601ac8" />
