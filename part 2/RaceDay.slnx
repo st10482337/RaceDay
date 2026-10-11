@@ -1,3 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <Project Path="RaceDayAPI.Tests/RaceDayAPI.Tests.csproj" Id="5eee3917-0ebd-49ec-afba-19e2cb282578" />
+  </Folder>
   <Project Path="RaceDayAPI/RaceDayAPI.csproj" />
 </Solution>
