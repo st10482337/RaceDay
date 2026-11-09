@@ -2,103 +2,126 @@
 
 ## 1. Project Overview
 
-RaceDay is an Event Management System designed to manage running, walking and cycling events.
+RaceDay is a web-based Event Management System developed to manage running, walking and cycling events. The system provides a central platform where participants can discover events, enrol in available activities, manage their profiles and view their race results.
 
-The system provides a central platform where event organisers can create and manage events, define event categories, manage participant enrolments and record race results. Participants can register for an account, maintain their profile, view available events, enrol in events and view their results.
+The system also provides organisers with tools to create and manage events, maintain event categories, oversee participant enrolments and record race results.
 
-The project is being developed using a structured approach that includes database design, API planning, version control and continuous integration.
-
----
+RaceDay is developed using ASP.NET Core Web API and ASP.NET Core MVC, with SQL Server used for relational data storage. The project also incorporates Azure Blob Storage for image storage, GitHub for version control and GitHub Actions for continuous integration.
 
 ## 2. Project Objectives
 
-The main objectives of the RaceDay Event Management System are to:
+The main objectives of RaceDay are to:
 
-- Allow users to register and authenticate securely.
-- Support different user roles.
-- Allow Organisers to create and manage events.
-- Allow Organisers to create event categories.
-- Allow Participants to enrol in events.
-- Allow Organisers to manage participant enrolments.
-- Record participant race results.
-- Allow Participants to view their results.
+- Provide secure user registration and authentication.
+- Support separate Participant and Organiser roles.
+- Allow organisers to create, update and delete events.
+- Allow organisers to manage event categories.
+- Allow participants to browse and view event details.
+- Allow participants to enrol in events and select categories.
+- Allow organisers to view and manage participant enrolments.
+- Record and manage participant race results.
+- Allow participants to view their finishing times and positions.
+- Allow participants to manage their profiles and profile pictures.
+- Support event banner and profile picture storage.
 - Maintain data integrity through relational database constraints.
-- Use GitHub for version control.
-- Use GitHub Actions for continuous integration and validation.
+- Use GitHub for source control and project collaboration.
+- Use automated builds and tests through GitHub Actions.
 
----
+## 3. System Users and Roles
 
-## 3. User Roles
+### 3.1 Organiser
 
-### Organiser
-
-An Organiser is responsible for managing events.
+Organisers are responsible for managing sporting events and overseeing participant activities.
 
 Organisers can:
 
-- Create events.
-- Update events.
+- Access the organiser dashboard.
+- View event management information.
+- Create new events.
+- Edit existing event details.
 - Delete events.
-- Create event categories.
-- Update categories.
-- Delete categories.
+- Manage event categories.
 - View participant enrolments.
-- Manage enrolment status.
-- Record participant results.
-- Update results.
+- Monitor enrolment statuses.
+- Record participant race results.
+- Update race results.
 
-### Participant
+### 3.2 Participant
 
-A Participant can interact with available events and manage their participation.
+Participants use the system to discover events and manage their participation.
 
 Participants can:
 
 - Register for an account.
-- Log into the system.
-- Manage their profile.
+- Log in to the system.
 - View available events.
-- View event details.
-- Enrol in an event.
+- View individual event details.
+- Enrol in events.
 - Select an event category.
-- View their enrolments.
-- View their race results.
-- Cancel an enrolment where applicable.
+- View their enrolled events.
+- Manage their profile information.
+- Upload a profile picture.
+- View their race results, including finishing times and positions.
 
----
+## 4. Main System Features
 
-## 4. Main System Components
+### 4.1 Authentication and User Management
 
-The RaceDay system is divided into several functional areas:
+The authentication functionality allows users to register and log in. Access to system functionality is controlled according to the user's role.
 
-### Authentication
+### 4.2 Event Management
 
-Handles user registration and login.
+Organisers can create, update and delete sporting events. Event information includes details such as the event name, date, location, distance and event type.
 
-### User Profiles
+Participants can browse available events and view additional event information before enrolling.
 
-Stores additional information associated with a registered user.
+### 4.3 Category Management
 
-### Events
+Event categories allow organisers to define different participation options for events. Categories can include distance-based or age-based classifications.
 
-Stores information about running, walking and cycling events.
+### 4.4 Participant Enrolments
 
-### Categories
+Participants can enrol in available events and select the relevant category. Organisers can view enrolment information and manage participant enrolment statuses.
 
-Allows events to have specific participation categories.
+### 4.5 Results Management
 
-### Enrolments
+Organisers can record participant race results, including finishing times and finishing positions.
 
-Records which Participants have entered which events and categories.
+Participants can access their personal results through the participant interface.
 
-### Results
+### 4.6 Participant Profiles
 
-Stores participant finishing times and finishing positions.
+Participants can view and update their profile information. The profile functionality also supports uploading a profile picture.
 
----
+### 4.7 Image Storage
 
-## 5. Database Design
+Azure Blob Storage is used to store uploaded images, including event banners and participant profile pictures.
 
-The database consists of six main entities:
+The application uses the API to handle image storage and retrieval, allowing uploaded images to be displayed through the MVC interface.
+
+## 5. System Architecture and Technologies
+
+RaceDay uses a layered application structure to separate the user interface, business functionality and data storage.
+
+The main technologies used include:
+
+| Technology | Purpose |
+|---|---|
+| C# | Main programming language |
+| ASP.NET Core Web API | Backend services and API endpoints |
+| ASP.NET Core MVC | Web application and user interface |
+| Entity Framework Core | Database access and management |
+| Microsoft SQL Server | Relational database |
+| Azure Blob Storage | Image storage |
+| HTML and CSS | Web page structure and styling |
+| JavaScript | Client-side functionality |
+| Git and GitHub | Version control |
+| GitHub Actions | Continuous integration |
+| Docker | Containerisation and deployment support |
+
+## 6. Database Design
+
+The RaceDay database contains six main entities:
 
 1. USER
 2. USER_PROFILE
@@ -112,148 +135,132 @@ The database uses:
 - Primary keys to uniquely identify records.
 - Foreign keys to establish relationships between tables.
 - NOT NULL constraints for required information.
-- UNIQUE constraints where duplicate values are not allowed.
-- CHECK constraints to restrict invalid values.
+- UNIQUE constraints to prevent duplicate values where applicable.
+- CHECK constraints to restrict invalid data.
 - Default values where appropriate.
 - Relational integrity between related entities.
 
-The database script is available in:
+The SQL database script is located in:
 
 `docs/RaceDayDB.sql`
 
----
+## 7. API Functionality
 
-## 6. API Endpoint Planning
-
-The planned API is divided into six functional areas:
+The Web API provides endpoints for the main system operations, including:
 
 - Authentication
-- User Profiles
+- User profiles
 - Events
 - Categories
-- Event Enrolments
+- Enrolments
 - Results
+- Image uploads and retrieval
 
-The API uses standard HTTP methods including:
+The API uses standard HTTP methods, including GET, POST, PUT and DELETE, to retrieve, create, update and remove information.
 
-- GET
-- POST
-- PUT
-- DELETE
-
-The complete API Endpoint Plan is available in:
+The API documentation is available in:
 
 `docs/API.pdf`
 
----
+## 8. Azure Blob Storage Integration
 
-## 7. Part 1 Documentation
+Azure Blob Storage is used to store images separately from the main relational database.
 
-The `docs` directory contains the planning and database documentation required for Part 1.
+The application supports image uploads for event banners and participant profile pictures.
 
-### Entity Relationship Diagram
+The image storage process involves:
 
-The ERD represents the database entities, attributes, relationships and multiplicities.
+1. A user selects an image through the MVC interface.
+2. The MVC application sends the image to the Web API.
+3. The API processes the upload through the blob storage service.
+4. The image is stored in an Azure Blob Storage container.
+5. The application retrieves and displays the stored image when required.
 
-File:
-
-`docs/ERD.pdf`
-
-### API Endpoint Plan
-
-The API Endpoint Plan defines the planned endpoints, HTTP methods, routes, descriptions, required roles, request bodies and expected responses.
-
-File:
-
-`docs/API.pdf`
-
-### SQL Database Script
-
-The SQL script creates the RaceDay database, tables, relationships, constraints and sample data.
-
-File:
-
-`docs/RaceDayDB.sql`
-
----
-
-## 8. Sample Database Data
-
-The database script includes sample data for testing and demonstration purposes.
-
-The sample data includes:
-
-- 2 Organisers
-- 2 Participants
-- 3 Events
-- Categories for each event
-- Sample Participant enrolments
-- Sample race results
-
-The SQL script was tested successfully in SQL Server Management Studio.
-
----
+This approach allows image files to be stored and retrieved without storing the actual image data directly in the SQL Server database.
 
 ## 9. Version Control
 
 Git and GitHub are used to manage the development of the RaceDay project.
 
-The repository contains the project documentation and supporting configuration files.
+The repository contains the source code, project documentation and supporting configuration files.
 
-Meaningful commits are used to record major development milestones and changes.
+Git commits are used to track development progress, record changes and maintain a history of the project.
 
-Repository:
+**GitHub Repository:**
 
-`RaceDay`
-
----
+https://github.com/st10482337/RaceDay
 
 ## 10. Continuous Integration
 
-GitHub Actions is used to perform continuous integration checks.
+GitHub Actions is used to perform automated continuous integration checks.
 
-The CI workflow automatically runs when changes are pushed to the `main` branch or when a pull request targets the `main` branch.
+The workflow is configured to run when changes are pushed to the `main` branch or when a pull request targets the `main` branch.
 
-The workflow:
+The workflow performs the following tasks:
 
 1. Checks out the repository.
-2. Checks that the required Part 1 documentation exists.
-3. Validates the presence of:
-   - `docs/ERD.pdf`
-   - `docs/API.pdf`
-   - `docs/RaceDayDB.sql`
+2. Validates the required Part 1 documentation files.
+3. Sets up the .NET 10 development environment.
+4. Restores the solution dependencies.
+5. Builds the RaceDay solution in Release configuration.
+6. Runs the automated API tests.
 
-A successful workflow is indicated by a green check mark in GitHub Actions.
+The required Part 1 documentation includes:
 
-Workflow file:
+- `docs/ERD.pdf`
+- `docs/API.pdf`
+- `docs/RaceDayDB.sql`
+
+A successful workflow run is indicated by a green check mark in the GitHub Actions section.
+
+**Workflow file:**
 
 `.github/workflows/main.yml`
 
----
+## 11. Docker and Containerisation
 
-## 11. YouTube Link
+Docker is included in the project deployment work to support running the RaceDay application in containers.
+
+The Docker configuration is intended to support the application services and database through Docker Compose.
+
+The final Docker setup instructions, configuration requirements and commands will be documented here once the container configuration has been integrated and tested successfully.
+
+## 12. Project Demonstration
+
+The project demonstration video is available below:
+
 https://youtu.be/Qvy8HtJOBFs
 
+The final Part 3 demonstration should cover the application functionality, participant and organiser interfaces, image storage integration and Docker configuration.
 
-## 12. CI
-<img width="1407" height="806" alt="image" src="https://github.com/user-attachments/assets/f676697a-50d3-4618-a44f-f11ad8601ac8" />
+## 13. AI Usage Disclosure
 
+AI tools were used as supplementary development and learning resources during the project. They assisted with understanding technical concepts, troubleshooting errors and reviewing aspects of the implementation.
 
-## 13. Repository Structure
+The development, testing, integration and verification of the project remain part of the student's work and responsibility.
 
-```text
-RaceDay/
-│
-├── .github/
-│   └── workflows/
-│       └── main.yml
-│
-├── docs/
-│   ├── ERD.pdf
-│   ├── API.pdf
-│   └── RaceDayDB.sql
-│
-└── README.md
+## 14. Part 1 Documentation
 
+The `docs` directory contains the original planning and database documentation.
 
+| Document | Description |
+|---|---|
+| ERD.pdf | Entity Relationship Diagram |
+| API.pdf | API Endpoint Plan |
+| RaceDayDB.sql | SQL database creation script |
 
+## 15. Repository Structure
+
+The repository is organised into the following main areas:
+
+- `.github/workflows/` – GitHub Actions workflow configuration.
+- `docs/` – Part 1 planning and database documentation.
+- `part 2/` – RaceDay application solution and related project files.
+- `README.md` – Project overview and documentation.
+
+---
+
+**Project:** RaceDay Event Management System  
+**Repository:** st10482337/RaceDay  
+**Framework:** .NET 10  
+**Database:** Microsoft SQL Server
