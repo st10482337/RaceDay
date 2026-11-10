@@ -192,31 +192,21 @@ https://github.com/st10482337/RaceDay
 
 ## 10. Continuous Integration
 
-GitHub Actions is used to perform automated continuous integration checks.
+GitHub Actions is used to automatically validate and test the RaceDay project whenever changes are pushed to the main branch or a pull request is created.
 
-The workflow is configured to run when changes are pushed to the `main` branch or when a pull request targets the `main` branch.
+The workflow is stored in `.github/workflows/ci.yml`.
 
-The workflow performs the following tasks:
+The CI pipeline performs the following tasks:
 
-1. Checks out the repository.
-2. Validates the required Part 1 documentation files.
-3. Sets up the .NET 10 development environment.
-4. Restores the solution dependencies.
-5. Builds the RaceDay solution in Release configuration.
-6. Runs the automated API tests.
+- Checks out the repository.
+- Validates the required Part 1 documentation files.
+- Restores NuGet dependencies.
+- Builds the RaceDay API.
+- Builds the RaceDay MVC application.
+- Builds the API test project.
+- Runs automated API tests.
 
-The required Part 1 documentation includes:
-
-- `docs/ERD.pdf`
-- `docs/API.pdf`
-- `docs/RaceDayDB.sql`
-
-A successful workflow run is indicated by a green check mark in the GitHub Actions section.
-
-**Workflow file:**
-
-`.github/workflows/main.yml`
-
+The workflow completed successfully, as indicated by the green success status on GitHub Actions.
 ## 11. Running RaceDay with Docker
 
 RaceDay can be run locally using Docker Compose. The setup includes the SQL Server database, ASP.NET Core Web API and MVC web application.
