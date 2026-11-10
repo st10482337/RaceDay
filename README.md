@@ -217,14 +217,46 @@ A successful workflow run is indicated by a green check mark in the GitHub Actio
 
 `.github/workflows/main.yml`
 
-## 11. Docker and Containerisation
+## 11. Running RaceDay with Docker
 
-Docker is included in the project deployment work to support running the RaceDay application in containers.
+RaceDay can be run locally using Docker Compose. The setup includes the SQL Server database, ASP.NET Core Web API and MVC web application.
 
-The Docker configuration is intended to support the application services and database through Docker Compose.
+### Requirements
+- Docker Desktop
+- WSL 2 enabled on Windows
 
-The final Docker setup instructions, configuration requirements and commands will be documented here once the container configuration has been integrated and tested successfully.
+### Starting the Application
 
+1. Open Docker Desktop and make sure the Docker Engine is running.
+2. Open PowerShell in the root RaceDay project folder.
+3. Create a `.env` file by copying `.env.example`.
+4. Run the following command to build and start the application:
+
+```powershell
+docker compose up --build -d
+```
+
+Docker Compose automatically starts SQL Server, creates and populates the database, and starts the API and MVC application.
+
+### Application URLs
+
+- MVC Website: http://localhost:8081
+- Web API: http://localhost:8080
+- Swagger API Documentation: http://localhost:8080/swagger
+
+### Stopping the Application
+
+Run:
+
+```powershell
+docker compose down
+```
+
+The database uses a persistent Docker volume. Avoid using `docker compose down -v` because this removes the database volume and its stored data.
+
+### Azure Blob Storage
+
+Azure Blob Storage configuration is optional for running the application locally. Image upload functionality requires valid Azure Blob Storage settings.
 ## 12. Project Demonstration
 
 The project demonstration video is available below:
